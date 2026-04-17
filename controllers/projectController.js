@@ -28,7 +28,11 @@ exports.createProject = async (req, res) => {
     const project = await Project.create(req.body);
     res.status(201).json(project);
   } catch (error) {
-    res.status(400).json({ message: 'Erro ao criar projeto.', error: error.message });
+    console.error('ERRO AO CRIAR PROJETO:', error);
+    res.status(400).json({
+      message: error.message,
+      error: error.message
+    });
   }
 };
 
@@ -45,7 +49,11 @@ exports.updateProject = async (req, res) => {
 
     res.json(project);
   } catch (error) {
-    res.status(400).json({ message: 'Erro ao atualizar projeto.', error: error.message });
+    console.error('ERRO AO ATUALIZAR PROJETO:', error);
+    res.status(400).json({
+      message: error.message,
+      error: error.message
+    });
   }
 };
 
